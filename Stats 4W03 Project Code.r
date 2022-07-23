@@ -21,7 +21,6 @@ AirQuality = na.omit(AirQuality)
 
 #gam.ns1 = lm(T ~ ns(CO.GT., 4) + ns(C6H6.GT., 5) + NOx.GT., data = AirQuality)
 gam.s1 = gam(T ~ s(CO.GT.,k = 4, bs = "gp") + s(C6H6.GT., k = 5, bs = "gp") + s(NOx.GT., bs = "gp"), data = AirQuality)
-
 gam.s2 = gam(T ~ s(CO.GT., bs = "gp") + s(C6H6.GT., bs = "gp") + NOx.GT., data = AirQuality)
 gam.s3 = gam(T ~ s(C6H6.GT., bs = "gp") + s(NO2.GT., bs = "gp"), data = AirQuality)
 gam.s4 = gam(T ~ s(C6H6.GT., bs = "gp")+ s(NO2.GT., bs = "gp") + s(NOx.GT.,bs = "gp"), data = AirQuality)
@@ -29,7 +28,7 @@ gam.s5 = gam(T ~ C6H6.GT. + s(NO2.GT., bs = "gp") + s(NOx.GT.,bs = "gp"), data =
 
 summary(gam.s1)
 gam.check(gam.s1)
-
+#i re do gam.s1/s2/s3... so that the p value doesnt have the *** (according to this https://noamross.github.io/gams-in-r-course/chapter2)
 gam.s1 = gam(T ~ s(CO.GT.,k = 5, bs = "gp") + s(C6H6.GT., k = 13, bs = "gp") + s(NOx.GT., bs = "gp", k = 13), data = AirQuality)
 summary(gam.s1)
 gam.check(gam.s1)
